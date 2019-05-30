@@ -60,7 +60,7 @@
       </a>
     </h1>
     <div style="margin:auto;">
-      <div id="inputBoxContainer">
+      <div id="inputBoxContainer" class="d-inline-block">
         <form action="javascript:input(0);" method="get" id="searchForm">
           <input type="text" id="inputBox" title="Search, drag and drop a video or playlist, or paste its URL here" />
         </form>
@@ -73,11 +73,14 @@
           </div>
         </div>
       </div>
-      
-    </div>
-    <button id="saveButton" class="blue" data-clipboard-text="https://MrDoekje.github.io/StreamlyPlusPlus/" onclick="saveButton();" title="Copy your playlist to clipboard"></button>
-    <span class="fas fa-cog" id="settingsButton" onclick="toggleMenu('settings');" title="Settings"></span>
-      <span class="fas fa-exchange" id="stationIcon" onclick="disconnectStation();" title="Streamly Station is connected. Click to disconnect..."></span>
+      <a id="saveButton" class="px-3 py-2 z-depth-0 maingray rounded d-inline-block" style="color:#6c757d" data-clipboard-text="https://MrDoekje.github.io/StreamlyPlusPlus/" onclick="saveButton();" title="Copy your playlist to clipboard"></a>
+      <a class="maingray px-2 rounded text-center py-1 d-inline-block">
+          <span style="color:#6c757d;vertical-align: middle;" class=" fas fa-cog ml-0 " id="settingsButton" onclick="toggleMenu('settings');" title="Settings"></span>
+
+      </a>
+          </div>
+
+     
     
   </header>
   <div class="row mt-4">
@@ -125,8 +128,8 @@
       
             </div>
             <div class="mx-0 w-100 white bShadow-30">
-              <form class="text-center pb-1 pt-2" action="javascript:input(2);" method="get">
-                <input type="textbox" id="playlistNameBox" placeholder="Streamly Playlist" title="Enter your playlist name" />
+              <form class="text-center py-3" action="javascript:input(2);" method="get">
+                <input type="textbox" class="rounded" id="playlistNameBox" placeholder="Streamly Playlist" title="Enter your playlist name" />
               </form>
               <div style="max-height:400px;overflow-y:auto">
                 <table id="videosTable" class="m-0 w-100"></table>

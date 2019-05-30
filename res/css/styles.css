@@ -37,12 +37,7 @@ header,
 .ui-autocomplete {
   z-index: 1;
 }
-#inputBoxContainer {
 
-  width: 100%;
-
-  position: relative;
-}
 input#inputBox {
   width: 800px;
 
@@ -57,11 +52,7 @@ input{
   font-weight:bold;
   border:none;
 }
-#saveButton {
-  margin-left: 25px;
-  padding: 5px 7px;
-  background-color: #fff;
-}
+
 #settingsButton {
   margin-left: 15px;
   color: #fff;
@@ -127,12 +118,7 @@ input{
 
 /** Grouped rules **/
 
-#inputBox,
-#saveButton {
-  border: none;
-  font-size: 1em;
-}
-#saveButton,
+
 #settingsButton,
 #stationIcon {
   cursor: pointer;
@@ -140,7 +126,6 @@ input{
 
 #main,
 #saveButton,
-
 #settings {
   border-radius: 5px
 }
@@ -491,9 +476,7 @@ tr.placeholder:before {
   #title {
     font-size: 0em;
   }
-  #inputBox, #saveButton {
-    font-size: 0.8em;
-  }
+
   #settingsButton,
   #stationIcon {
     font-size: 1.5em;
@@ -505,9 +488,8 @@ tr.placeholder:before {
     margin-left: 5px !important;
     width: calc(100% - 195px) !important;
   }
-  #saveButton {
-    margin-left: 15px !important;
-  }
+
+
   #settingsButton {
     margin-left: 5px !important;
   }
