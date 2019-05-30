@@ -14,7 +14,6 @@
 window.onload = function() {
   $("header, #forkme").addClass("animated slideInDown");
   $("header").css("display", "flex");
-  $("#forkme").css("display", "initial");
 
   $("footer").addClass("animated slideInUp").css("display", "initial");
   $("#links").addClass("animated fadeIn").css("display", "initial");

@@ -20,9 +20,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Portable, independent, web-based, simple streaming YouTube video queues and playlists for music videos, audiobooks, etc." />
 
-  <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Pacifico|Roboto" type="text/css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico|Roboto" type="text/css" />
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" type="text/css" />
-  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css" type="text/css" />
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css" type="text/css" />
   
   <!-- Icon Stuff -->
   <link rel="shortcut icon" id="favicon" href="res/img/favicon.png" type="image/x-icon" />
@@ -42,38 +42,107 @@
   
   <!-- CSS Stylesheet -->
   <link rel="stylesheet" href="res/css/styles.css" type="text/css" />
+  <link rel="stylesheet" href="res/css/Site.css" type="text/css" />
+  <link rel="stylesheet" href="res/css/bootstrap.min.css" type="text/css" />
 
   <!-- External scripts -->
-  <script src="//code.jquery.com/jquery-3.1.0.min.js" crossorigin="anonymous"></script>
-  <script src="//code.jquery.com/ui/1.12.0/jquery-ui.min.js" crossorigin="anonymous"></script>
-  <script src="//cdn.rawgit.com/zenorocha/clipboard.js/v1.5.12/dist/clipboard.min.js"></script>
-  <script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+  <script src="https://code.jquery.com/jquery-3.1.0.min.js" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.rawgit.com/zenorocha/clipboard.js/v1.5.12/dist/clipboard.min.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
 </head>
-<body>
+<body class="maingray">
   <div id="dataFramesContainer"></div>
-  <a id="forkme" href="https://github.com/LNFWebsite/Streamly" target="_blank"><img id="forkmeImage" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
-  <header>
+  <header class="bShadow-1">
     <h1 id="title">
       <a href="">
         <img id="logo" src="https://raw.githubusercontent.com/LNFWebsite/Streamly/master/res/img/logo/logo_streamly_color/logo_streamly_color_low_res.png" />
       </a>
     </h1>
-    <div id="inputBoxContainer">
-      <form action="javascript:input(0);" method="get" id="searchForm">
-        <input type="text" id="inputBox" title="Search, drag and drop a video or playlist, or paste its URL here" />
-      </form>
-      <div id="searchProgress">
-        <div class="spinner">
-          <div class="bounce1"></div>
-          <div class="bounce2"></div>
-          <div class="bounce3"></div>
+    <div style="margin:auto;">
+      <div id="inputBoxContainer">
+        <form action="javascript:input(0);" method="get" id="searchForm">
+          <input type="text" id="inputBox" title="Search, drag and drop a video or playlist, or paste its URL here" />
+        </form>
+        <div id="searchProgress">
+          <div class="spinner">
+            <div class="bounce1"></div>
+            <div class="bounce2"></div>
+            <div class="bounce3"></div>
+          </div>
         </div>
       </div>
+      
     </div>
-    <button id="saveButton" data-clipboard-text="https://lnfwebsite.github.io/Streamly/" onclick="saveButton();" title="Copy your playlist to clipboard"></button>
     <span class="fas fa-cog" id="settingsButton" onclick="toggleMenu('settings');" title="Settings"></span>
-    <span class="fas fa-exchange" id="stationIcon" onclick="disconnectStation();" title="Streamly Station is connected. Click to disconnect..."></span>
+      <span class="fas fa-exchange" id="stationIcon" onclick="disconnectStation();" title="Streamly Station is connected. Click to disconnect..."></span>
+    
   </header>
+  <div class="row mt-4">
+      <div id="playlistInterface" class="col-lg-8 pr-0 col-12 mb-3">
+        <div class="pl-3">
+            <div id="youtubeContainer" title="Click to pause" class=" embed-responsive embed-responsive-21by9">
+
+                <iframe id="youtube" class="embed-responsive-item" src="" allowfullscreen></iframe>
+              </div>
+        </div>
+
+
+        </div>
+      <div  class="col-lg-4 col-12 px-4">
+
+          <div id="previousVideo" class="mb-3 bShadow-30" onclick="backVideo();" title="Back">
+
+              <div class="d-flex ml-4">
+                  
+                  <b class="d-flex" style="justify-content: center;flex-direction: column;">Prev:</b>
+                  <p class="videoName d-flex ml-3 my-0" style="justify-content: center;flex-direction: column;display:inline-block;max-width: calc(100% -  190px)"></p>
+                  <img class="videoImage  d-flex  ml-auto" style="display:inline-block" src="" />
+                  
+                  <div style="position:relative">
+                      <h6 class="videoTime" style="position:absolute;bottom:0px;right:0px;color:white;background:rgba(0,0,0,0.5)"></h6>
+                    </div>
+                </div>
+            </div>
+            <div id="nextVideo" class="bShadow-30 mb-3" onclick="forwardVideo();" title="Forward">
+
+                <div class="ml-4 d-flex">
+
+                  <b class="d-flex" style="justify-content: center;flex-direction: column;">Next:</b>
+                  <p class="videoName d-flex ml-3 my-0" style="justify-content: center;flex-direction: column;display:inline-block;max-width: calc(100% -  190px)"></p>
+                  
+                      <img class="videoImage  d-flex ml-auto" style="display:inline-block" src="" />
+
+
+                   <div style="position:relative">
+                      <h6 class="videoTime" style="position:absolute;bottom:0px;right:0px;color:white;background:rgba(0,0,0,0.5)"></h6>
+                    </div>
+                   
+                  </div>
+      
+      
+            </div>
+            <div class="mx-0 w-100 white bShadow-30">
+              <!--<form class="text-center pb-1 pt-2" action="javascript:input(2);" method="get">
+                <input type="textbox" id="playlistNameBox" placeholder="Streamly Playlist" title="Enter your playlist name" />
+              </form>-->
+              <div style="max-height:400px;overflow-y:auto">
+                <table id="videosTable" class="m-0 w-100"></table>
+              </div>
+            </div>
+            
+            
+      </div>
+
+
+    <div id="settings">
+      <span class="fas fa-arrow-circle-right" onclick="playlistFeatures.playNext();" title="Added videos will play next"></span>
+      <span class="fas fa-random" onclick="playlistFeatures.shuffle();" title="Playlist shuffle"></span>
+      <span class="fas fa-redo-alt" onclick="playlistFeatures.repeat();" title="Playlist repeat"></span>
+      <span class="fas fa-rss" onclick="playlistFeatures.autoplay();" title="Streamly Radio"></span>
+      <span class="fab fa-reddit" id="ad" onclick="shareOnReddit();" title="Share playlist on Reddit"></span>
+    </div>
+  </div>
   <div id="main">
     <div id="dropShadow"></div>
     <div id="dropOverlay"><p>(Drop videos/playlists anywhere on screen)</p></div>
@@ -119,65 +188,11 @@
       </div>
     </div>
     <div id="blurBackground"></div>
-    <form action="javascript:input(2);" method="get">
-      <input type="textbox" id="playlistNameBox" placeholder="Streamly Playlist" title="Enter your playlist name" />
-    </form>
-    <table id="videosTable"></table>
-    <div id="links">
-      <a href="//github.com/LNFWebsite/Streamly/wiki/Getting-Started" target="_blank">Getting Started</a> |
-      <a href="//github.com/LNFWebsite/Streamly/wiki/Playlists" target="_blank">Playlists Wiki</a> |
-      <a href="//lnfwebsite.github.io/Streamly-Import/" target="_blank">Import Playlists</a> |
-      <a href="//www.reddit.com/r/StreamlyReddit/" target="_blank">StreamlyReddit</a>
-      <br>
-      <a style="color:red;" href="//www.reddit.com/r/StreamlyReddit/comments/b6mn0q/chrome_now_supports_background_audio_playback_on/" target="_blank">Chrome now supports background audio playback on Android!</a>
-    </div>
+
+    
+   
   </div>
-  <footer>
-    <div id="previousVideo" onclick="backVideo();" title="Back">
-      <div class="videoNameContainer">
-        <p class="videoName"></p>
-      </div>
-      <div class="videoImageContainer">
-        <div class="videoImageWrapper">
-          <img class="videoImage" src="" />
-          <span class="fas fa-backward"></span>
-          <p class="videoTime"></p>
-        </div>
-      </div>
-    </div>
-    <div id="playlistInterface">
-      <div id="youtubeContainer" title="Click to pause">
-        <span id="remotePauseIcon" class="fas fa-play"></span>
-        <iframe id="youtube" src="" allowfullscreen></iframe>
-      </div>
-      <div id="currentVideoTiming">
-        <span id="currentTime">0:00</span>
-        <span id="progressContainer">
-          <span id="progress" style="width:0%;"></span>
-        </span>
-        <span id="videoTime">0:00</span>
-      </div>
-    </div>
-    <div id="nextVideo" onclick="forwardVideo();" title="Forward">
-      <div class="videoImageContainer">
-        <div class="videoImageWrapper">
-          <img class="videoImage" src="" />
-          <span class="fas fa-forward"></span>
-          <p class="videoTime"></p>
-        </div>
-      </div>
-      <div class="videoNameContainer">
-        <p class="videoName"></p>
-      </div>
-    </div>
-    <div id="settings">
-      <span class="fas fa-arrow-circle-right" onclick="playlistFeatures.playNext();" title="Added videos will play next"></span>
-      <span class="fas fa-random" onclick="playlistFeatures.shuffle();" title="Playlist shuffle"></span>
-      <span class="fas fa-redo-alt" onclick="playlistFeatures.repeat();" title="Playlist repeat"></span>
-      <span class="fas fa-rss" onclick="playlistFeatures.autoplay();" title="Streamly Radio"></span>
-      <span class="fab fa-reddit" id="ad" onclick="shareOnReddit();" title="Share playlist on Reddit"></span>
-    </div>
-  </footer>
+
   <!--
   <div id="dialog"></div>
   <script>
