@@ -92,7 +92,7 @@ var VideoFunctions = function() {
     sendStation("videofunctionsplay");
     videoPaused = false;
     document.title = "Streamly - " + decodeURIComponent(videos[videoIteration][0]);
-    $("#favicon").attr("href", faviconPlay);
+    
   }
   this.pause = function() {
     sendStation("videofunctionspause");
@@ -100,7 +100,7 @@ var VideoFunctions = function() {
     if (videos[0] !== undefined && videos[0] !== null) {
       document.title = "Streamly - " + decodeURIComponent(videos[0]);
     }
-    $("#favicon").attr("href", faviconPause);
+    
     actionTimers.pause();
   }
 }
